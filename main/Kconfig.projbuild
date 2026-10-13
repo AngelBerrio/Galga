@@ -1,0 +1,50 @@
+menu "Sensor de nivel HX711"
+
+    config NIVEL_HX711_DOUT_GPIO
+        int "GPIO conectado a DOUT del HX711"
+        range 0 39
+        default 4
+        help
+            Pin de datos del HX711. En la ESP32 de 30 pines del montaje original es el GPIO4.
+
+    config NIVEL_HX711_SCK_GPIO
+        int "GPIO conectado a SCK del HX711"
+        range 0 33
+        default 14
+        help
+            Pin de reloj del HX711. Debe ser un GPIO con salida (0-33 en ESP32).
+
+    config NIVEL_FACTOR_CALIBRACION
+        int "Factor de calibración inicial (cuentas por kg)"
+        range 500 100000000
+        default 395000
+        help
+            Cuentas del HX711 por cada kg. Se puede ajustar en ejecución con '+' y '-'.
+
+    config NIVEL_AREA_BASE_CENTESIMAS
+        int "Área de la base del tanque (centésimas de cm²)"
+        range 1 100000000
+        default 16426
+        help
+            Kconfig no admite decimales, por eso el área va en centésimas: 16426 = 164.26 cm².
+
+    config NIVEL_DENSIDAD_MILESIMAS
+        int "Densidad del líquido (milésimas de kg/L)"
+        range 1 100000
+        default 1000
+        help
+            1000 = 1.000 kg/L (agua).
+
+    config NIVEL_PERIODO_MS
+        int "Periodo entre mediciones (ms)"
+        range 100 60000
+        default 500
+
+    config NIVEL_MUESTRAS_TARA
+        int "Lecturas promediadas al hacer la tara"
+        range 1 50
+        default 10
+        help
+            La librería HX711 de Arduino usa 10 lecturas en tare().
+
+endmenu

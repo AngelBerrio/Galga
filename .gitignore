@@ -1,0 +1,22 @@
+# Salidas de compilación de ESP-IDF
+build/
+test_app/build/
+
+# Copias de respaldo de menuconfig
+sdkconfig.old
+test_app/sdkconfig.old
+
+# La app de pruebas genera su sdkconfig según el target elegido (esp32 o linux).
+# El sdkconfig del proyecto principal SÍ se versiona (lo exige la tarea).
+test_app/sdkconfig
+
+# Componentes descargados por el gestor de componentes
+managed_components/
+dependencies.lock
+
+# Editores y sistema operativo
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

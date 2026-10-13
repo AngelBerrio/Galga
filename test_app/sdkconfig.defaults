@@ -1,0 +1,2 @@
+# La app de pruebas no necesita watchdog de tareas mientras corre Unity.
+CONFIG_ESP_TASK_WDT_INIT=n
